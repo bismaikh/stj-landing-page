@@ -33,14 +33,14 @@
     <div class="container top-bar-inner">
       <div class="top-bar-text">
         <span class="pulse-dot"></span>
-        <span><strong>Kuartal 2026:</strong> Pembukaan Slot Kemitraan Baru Unit Usaha Terpilih • Kuota Terbatas</span>
+        <span class="top-bar-announcement"><strong>Kuartal 2026:</strong> Pembukaan Slot Kemitraan Baru Unit Usaha Terpilih • Kuota Terbatas</span>
       </div>
       <div class="top-bar-links">
         <a href="tel:+628775211123" class="top-bar-link">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
           <span>+62 877-5211-123</span>
         </a>
-        <a href="mailto:info@sekawantunggaljaya.co.id" class="top-bar-link">
+        <a href="mailto:info@sekawantunggaljaya.co.id" class="top-bar-link top-bar-email">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
           <span>info@sekawantunggaljaya.co.id</span>
         </a>
@@ -81,35 +81,99 @@
           <span>+62 877-5211-123</span>
         </a>
 
-        <!-- CTA Modal Trigger -->
-        <button class="btn btn-gold btn-sm open-consult-modal">
+        <!-- CTA Modal Trigger (Desktop / Tablet) -->
+        <button class="btn btn-gold btn-sm open-consult-modal nav-cta-desktop">
           <span>Konsultasi</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </button>
 
-        <!-- Mobile Menu Trigger -->
-        <button id="mobile-toggle" class="mobile-toggle-btn" aria-label="Buka Menu Mobile">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        <!-- Animated Mobile Menu Trigger -->
+        <button id="mobile-toggle" class="mobile-toggle-btn" aria-label="Buka Menu Mobile" aria-expanded="false">
+          <span class="bar bar-1"></span>
+          <span class="bar bar-2"></span>
+          <span class="bar bar-3"></span>
         </button>
       </div>
     </div>
+  </nav>
 
-    <!-- Mobile Drawer -->
-    <div id="mobile-drawer" class="mobile-drawer">
-      <a href="#beranda" class="mobile-nav-link">Beranda</a>
-      <a href="#keunggulan" class="mobile-nav-link">Tentang Kami</a>
-      <a href="#unit-usaha" class="mobile-nav-link">Unit Usaha (5 Pilihan)</a>
-      <a href="#kinerja" class="mobile-nav-link">Track Record & Kinerja</a>
-      <a href="#kalkulator" class="mobile-nav-link">Kalkulator Investasi</a>
-      <a href="#testimoni" class="mobile-nav-link">Testimoni Investor</a>
-      <a href="#faq" class="mobile-nav-link">Pertanyaan (FAQ)</a>
-      <a href="#kontak" class="mobile-nav-link">Kontak & Lokasi</a>
-      <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem;">
-        <button class="btn btn-gold open-consult-modal" style="width: 100%;">Mulai Konsultasi Sekarang</button>
-        <a href="https://wa.me/628775211123" target="_blank" class="btn btn-outline" style="width: 100%;">Hubungi via WhatsApp</a>
+  <!-- Mobile Backdrop Overlay -->
+  <div id="mobile-backdrop" class="mobile-backdrop" aria-hidden="true"></div>
+
+  <!-- Modern Slide-In Mobile Drawer -->
+  <aside id="mobile-drawer" class="mobile-drawer" aria-label="Navigasi Menu Mobile">
+    <div class="mobile-drawer-header">
+      <div class="mobile-drawer-brand">
+        <img src="img/logo-symbol.png?v=2" alt="STJ" class="drawer-logo-icon">
+        <div class="drawer-brand-text">
+          <span class="drawer-brand-title">Sekawan Tunggal Jaya</span>
+          <span class="drawer-brand-sub">Mitra Investasi Terpercaya</span>
+        </div>
+      </div>
+      <button id="mobile-drawer-close" class="mobile-drawer-close-btn" aria-label="Tutup Menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+
+    <div class="mobile-drawer-body">
+      <nav class="mobile-nav-list">
+        <a href="#beranda" class="mobile-nav-link">
+          <span>Beranda</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+        <a href="#keunggulan" class="mobile-nav-link">
+          <span>Tentang Kami</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+        <a href="#unit-usaha" class="mobile-nav-link">
+          <span>Unit Usaha (5 Pilihan)</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+        <a href="#kinerja" class="mobile-nav-link">
+          <span>Track Record & Kinerja</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+        <a href="#kalkulator" class="mobile-nav-link">
+          <span>Kalkulator Investasi</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+        <a href="#testimoni" class="mobile-nav-link">
+          <span>Testimoni Investor</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+        <a href="#faq" class="mobile-nav-link">
+          <span>Pertanyaan (FAQ)</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+        <a href="#kontak" class="mobile-nav-link">
+          <span>Kontak & Lokasi</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+      </nav>
+
+      <div class="mobile-drawer-cta">
+        <button class="btn btn-gold open-consult-modal" style="width: 100%;">
+          <span>Mulai Konsultasi Sekarang</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+        <a href="https://wa.me/628775211123" target="_blank" class="btn btn-outline-wa" style="width: 100%;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <span>Chat via WhatsApp Resmi</span>
+        </a>
+      </div>
+
+      <div class="mobile-drawer-footer">
+        <a href="tel:+628775211123" class="drawer-contact-item">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <span>+62 877-5211-123</span>
+        </a>
+        <a href="mailto:info@sekawantunggaljaya.co.id" class="drawer-contact-item">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <span>info@sekawantunggaljaya.co.id</span>
+        </a>
       </div>
     </div>
-  </nav>
+  </aside>
 
   <!-- =========================================================================
        HERO SECTION

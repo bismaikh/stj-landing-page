@@ -53,17 +53,71 @@ function updateThemeIcon(theme) {
 function initMobileNav() {
   const mobileBtn = document.getElementById('mobile-toggle');
   const drawer = document.getElementById('mobile-drawer');
+  const backdrop = document.getElementById('mobile-backdrop');
+  const closeBtn = document.getElementById('mobile-drawer-close');
   const navLinks = document.querySelectorAll('.mobile-nav-link');
+  const drawerCtas = drawer ? drawer.querySelectorAll('.open-consult-modal, .btn-outline-wa') : [];
+
+  function openDrawer() {
+    if (!drawer) return;
+    drawer.classList.add('active');
+    if (backdrop) backdrop.classList.add('active');
+    if (mobileBtn) {
+      mobileBtn.classList.add('is-active');
+      mobileBtn.setAttribute('aria-expanded', 'true');
+    }
+    document.body.classList.add('menu-open');
+  }
+
+  function closeDrawer() {
+    if (!drawer) return;
+    drawer.classList.remove('active');
+    if (backdrop) backdrop.classList.remove('active');
+    if (mobileBtn) {
+      mobileBtn.classList.remove('is-active');
+      mobileBtn.setAttribute('aria-expanded', 'false');
+    }
+    document.body.classList.remove('menu-open');
+  }
 
   if (mobileBtn && drawer) {
-    mobileBtn.addEventListener('click', () => {
-      drawer.classList.toggle('active');
+    mobileBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (drawer.classList.contains('active')) {
+        closeDrawer();
+      } else {
+        openDrawer();
+      }
     });
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        closeDrawer();
+      });
+    }
+
+    if (backdrop) {
+      backdrop.addEventListener('click', () => {
+        closeDrawer();
+      });
+    }
 
     navLinks.forEach(link => {
       link.addEventListener('click', () => {
-        drawer.classList.remove('active');
+        closeDrawer();
       });
+    });
+
+    drawerCtas.forEach(cta => {
+      cta.addEventListener('click', () => {
+        closeDrawer();
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer.classList.contains('active')) {
+        closeDrawer();
+      }
     });
   }
 }
@@ -384,6 +438,17 @@ function initConsultationModal() {
   consultTriggers.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
+      // Close mobile drawer if open
+      const drawer = document.getElementById('mobile-drawer');
+      const backdrop = document.getElementById('mobile-backdrop');
+      const mobileBtn = document.getElementById('mobile-toggle');
+      if (drawer) drawer.classList.remove('active');
+      if (backdrop) backdrop.classList.remove('active');
+      if (mobileBtn) {
+        mobileBtn.classList.remove('is-active');
+        mobileBtn.setAttribute('aria-expanded', 'false');
+      }
+      document.body.classList.remove('menu-open');
       if (consultModal) consultModal.classList.add('active');
     });
   });
